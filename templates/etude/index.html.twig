@@ -3,7 +3,7 @@
 {% block title %}Etude index{% endblock %}
 
 {% block body %}
-    <h1>Etude index</h1>
+    <h1 class="center maj"> Listes des etudes en cours</h1>
 
     <table class="table">
         <thead>
@@ -11,7 +11,7 @@
                 <th>Id</th>
                 <th>CreationDate</th>
                 <th>Nom</th>
-                <th>actions</th>
+
             </tr>
         </thead>
         <tbody>
@@ -20,10 +20,7 @@
                 <td>{{ etude.id }}</td>
                 <td>{{ etude.creationDate ? etude.creationDate|date('Y-m-d') : '' }}</td>
                 <td>{{ etude.nom }}</td>
-                <td>
-                    <a href="{{ path('etude_show', {'id': etude.id}) }}">show</a>
-                    <a href="{{ path('etude_edit', {'id': etude.id}) }}">edit</a>
-                </td>
+
             </tr>
         {% else %}
             <tr>
@@ -33,5 +30,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('etude_new') }}">Create new</a>
+
 {% endblock %}

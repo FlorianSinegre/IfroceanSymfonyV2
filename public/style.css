@@ -1,4 +1,24 @@
-.tr_hover{
-    background-color: #999999;
+.tr_hover:hover{
+    background-color: #F5871F;
     cursor: pointer;
+
+}
+
+.table{
+    width: inherit;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: solid black;
+}
+.center{
+    text-align: center;
+    margin: 50px;
+
+}
+.maj{
+    text-transform: uppercase;
+}
+td,th,tr{
+    border: solid black 1px;
 }

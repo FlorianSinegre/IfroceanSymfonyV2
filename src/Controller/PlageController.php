@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Commune;
+use App\Entity\Departement;
+use App\Entity\Etude;
 use App\Entity\Plage;
+use App\Entity\ZoneDePrelevement;
 use App\Form\PlageType;
 use App\Repository\PlageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,8 +57,19 @@ class PlageController extends AbstractController
      */
     public function show(Plage $plage): Response
     {
+        $zonedeprelevements = $this->getDoctrine()->getRepository(ZoneDePrelevement::class)->findAll();
+        $communes = $this->getDoctrine()->getRepository(Commune::class)->findAll();
+        $departement = $this->getDoctrine()->getRepository(Departement::class)->findAll();
+        $etudes = $this->getDoctrine()->getRepository(Etude::class)->findAll();
+
+
         return $this->render('plage/show.html.twig', [
+            'zonedeprelevements' => $zonedeprelevements,
             'plage' => $plage,
+            'communes' => $communes,
+            'departements' => $departement,
+            'etudes' => $etudes
+
         ]);
     }
 

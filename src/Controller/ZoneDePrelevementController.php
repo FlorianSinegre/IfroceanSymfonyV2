@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Commune;
+use App\Entity\Departement;
+use App\Entity\Etude;
+use App\Entity\Plage;
 use App\Entity\ZoneDePrelevement;
 use App\Form\ZoneDePrelevementType;
 use App\Repository\ZoneDePrelevementRepository;
@@ -11,17 +15,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/zone/de/prelevement")
+ * @Route("/zonedeprelevement")
  */
 class ZoneDePrelevementController extends AbstractController
 {
     /**
      * @Route("/", name="zone_de_prelevement_index", methods={"GET"})
      */
-    public function index(ZoneDePrelevementRepository $zoneDePrelevementRepository): Response
+    public function index(ZoneDePrelevement $zoneDePrelevement): Response
     {
-        return $this->render('zone_de_prelevement/index.html.twig', [
-            'zone_de_prelevements' => $zoneDePrelevementRepository->findAll(),
+
+        $especes = $this->getDoctrine()->getRepository(Plage::class)->findAll();
+        $zoneDePrelevement = $this->getDoctrine()->getRepository(ZoneDePrelevement::class)->findAll();
+
+
+        return $this->render('zone_de_prelevement/show.html.twig', [
+            'zoneDePrelevements' => $zoneDePrelevement,
+            'especes' => $especes,
+
         ]);
     }
 

@@ -2,7 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Commune;
+use App\Entity\Departement;
+use App\Entity\Espece;
+use App\Entity\Etude;
 use App\Entity\Plage;
+use App\Entity\ZoneDePrelevement;
 use http\Client\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,23 +25,16 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/plage/{id<[0-9]+>}", name="affichage_plage")
+     * @Route("/zonedeprelevement/{id<[0-9]+>}", name="affichage_zonedeprelevement")
      */
-    public function affichage_plage(Plage $plage): \Symfony\Component\HttpFoundation\Response
+    public function affichage_zonedeprelevement(zonedeprelevement $zonedeprelevement): \Symfony\Component\HttpFoundation\Response
     {
-        $zonedeprelevements = $this->getDoctrine()->getRepository(ZoneDePrelevement::class)->findAll();
-        $communes = $this->getDoctrine()->getRepository(Commune::class)->findAll();
-        $departement = $this->getDoctrine()->getRepository(Departement::class)->findAll();
-        $etudes = $this->getDoctrine()->getRepository(Etude::class)->findAll();
+        $espece = $this->getDoctrine()->getRepository(Espece::class)->findAll();
 
 
-        return $this->render('plage/affichage_plage.html.twig', [
-            'zonedeprelevements' => $zonedeprelevements,
-            'plage' => $plage,
-            'communes' => $communes,
-            'departements' => $departement,
-            'etudes' => $etudes
-
+        return $this->render('zonedeprelevement/show_zoneDePrelevement.html.twig', [
+            'especes' => $espece,
+            'zonedeprelevement' => $zonedeprelevement,
         ]);
     }
 }
