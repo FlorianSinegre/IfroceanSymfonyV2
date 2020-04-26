@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ZoneDePrelevement{% endblock %}
+
+{% block body %}
+    <h1>Create new ZoneDePrelevement</h1>
+
+    {{ include('zone_de_prelevement/_form.html.twig') }}
+
+    <a href="{{ path('zone_de_prelevement_index') }}">back to list</a>
+{% endblock %}

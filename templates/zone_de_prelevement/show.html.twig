@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ZoneDePrelevement{% endblock %}
+
+{% block body %}
+    <h1>ZoneDePrelevement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ zone_de_prelevement.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ zone_de_prelevement.nom }}</td>
+            </tr>
+            <tr>
+                <th>PositionX1</th>
+                <td>{{ zone_de_prelevement.PositionX1 }}</td>
+            </tr>
+            <tr>
+                <th>PositionY1</th>
+                <td>{{ zone_de_prelevement.PositionY1 }}</td>
+            </tr>
+            <tr>
+                <th>PositionX2</th>
+                <td>{{ zone_de_prelevement.PositionX2 }}</td>
+            </tr>
+            <tr>
+                <th>PositionY2</th>
+                <td>{{ zone_de_prelevement.PositionY2 }}</td>
+            </tr>
+            <tr>
+                <th>PositionX3</th>
+                <td>{{ zone_de_prelevement.PositionX3 }}</td>
+            </tr>
+            <tr>
+                <th>PositionY3</th>
+                <td>{{ zone_de_prelevement.PositionY3 }}</td>
+            </tr>
+            <tr>
+                <th>PositionX4</th>
+                <td>{{ zone_de_prelevement.PositionX4 }}</td>
+            </tr>
+            <tr>
+                <th>PositionY4</th>
+                <td>{{ zone_de_prelevement.PositionY4 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('zone_de_prelevement_index') }}">back to list</a>
+
+    <a href="{{ path('zone_de_prelevement_edit', {'id': zone_de_prelevement.id}) }}">edit</a>
+
+    {{ include('zone_de_prelevement/_delete_form.html.twig') }}
+{% endblock %}

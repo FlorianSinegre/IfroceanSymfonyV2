@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ZoneDePrelevement index{% endblock %}
+
+{% block body %}
+    <h1>ZoneDePrelevement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>PositionX1</th>
+                <th>PositionY1</th>
+                <th>PositionX2</th>
+                <th>PositionY2</th>
+                <th>PositionX3</th>
+                <th>PositionY3</th>
+                <th>PositionX4</th>
+                <th>PositionY4</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for zone_de_prelevement in zone_de_prelevements %}
+            <tr>
+                <td>{{ zone_de_prelevement.id }}</td>
+                <td>{{ zone_de_prelevement.nom }}</td>
+                <td>{{ zone_de_prelevement.PositionX1 }}</td>
+                <td>{{ zone_de_prelevement.PositionY1 }}</td>
+                <td>{{ zone_de_prelevement.PositionX2 }}</td>
+                <td>{{ zone_de_prelevement.PositionY2 }}</td>
+                <td>{{ zone_de_prelevement.PositionX3 }}</td>
+                <td>{{ zone_de_prelevement.PositionY3 }}</td>
+                <td>{{ zone_de_prelevement.PositionX4 }}</td>
+                <td>{{ zone_de_prelevement.PositionY4 }}</td>
+                <td>
+                    <a href="{{ path('zone_de_prelevement_show', {'id': zone_de_prelevement.id}) }}">show</a>
+                    <a href="{{ path('zone_de_prelevement_edit', {'id': zone_de_prelevement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('zone_de_prelevement_new') }}">Create new</a>
+{% endblock %}

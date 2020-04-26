@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etude index{% endblock %}
+
+{% block body %}
+    <h1>Etude index</h1>
+
+    <table class="table">
+        <thead>
+            <tr >
+                <th>Id</th>
+                <th>CreationDate</th>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etude in etudes %}
+            <tr class="tr_hover" onclick="window.location='/etude/{{ etude.id }}'">
+                <td>{{ etude.id }}</td>
+                <td>{{ etude.creationDate ? etude.creationDate|date('Y-m-d') : '' }}</td>
+                <td>{{ etude.nom }}</td>
+                <td>
+                    <a href="{{ path('etude_show', {'id': etude.id}) }}">show</a>
+                    <a href="{{ path('etude_edit', {'id': etude.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('etude_new') }}">Create new</a>
+{% endblock %}

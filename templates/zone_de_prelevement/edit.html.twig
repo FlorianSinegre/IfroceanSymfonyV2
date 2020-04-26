@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ZoneDePrelevement{% endblock %}
+
+{% block body %}
+    <h1>Edit ZoneDePrelevement</h1>
+
+    {{ include('zone_de_prelevement/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('zone_de_prelevement_index') }}">back to list</a>
+
+    {{ include('zone_de_prelevement/_delete_form.html.twig') }}
+{% endblock %}
