@@ -50,7 +50,7 @@ class ZoneDePrelevementController extends AbstractController
             $entityManager->persist($zoneDePrelevement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('zone_de_prelevement_index');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('zone_de_prelevement/new.html.twig', [

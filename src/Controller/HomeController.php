@@ -8,21 +8,14 @@ use App\Entity\Espece;
 use App\Entity\Etude;
 use App\Entity\Plage;
 use App\Entity\ZoneDePrelevement;
+use App\Repository\EtudeRepository;
 use http\Client\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    /**
-     * @Route("/home", name="home")
-     */
-    public function index()
-    {
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
+
 
     /**
      * @Route("/zonedeprelevement/{id<[0-9]+>}", name="affichage_zonedeprelevement")
@@ -35,6 +28,15 @@ class HomeController extends AbstractController
         return $this->render('zonedeprelevement/show_zoneDePrelevement.html.twig', [
             'especes' => $espece,
             'zonedeprelevement' => $zonedeprelevement,
+        ]);
+    }
+    /**
+     * @Route("/home", name="home")
+     */
+    public function index(EtudeRepository $etudeRepository): \Symfony\Component\HttpFoundation\Response
+    {
+        return $this->render('etude/index.html.twig', [
+            'etudes' => $etudeRepository->findAll(),
         ]);
     }
 }

@@ -1,20 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Etude{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1 class="center maj">LISTE DES PLAGES DE <span>{{ etude.nom}}</span> </h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/wearz/Desktop/IfroceanV2/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/wearz/Desktop/IfroceanV2/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nom des plages associées à l'étude " {{ etude.nom }} "</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for plage in etude.EtudeHasPlage %}
+            <tr class="tr-hover" onclick="window.location='/plage/{{ plage.id }}'">
+                <td>{{ plage.id }}</td>
+                <td>{{ plage.nom }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+    {{ include('etude/_delete_form.html.twig') }}
 {% endblock %}

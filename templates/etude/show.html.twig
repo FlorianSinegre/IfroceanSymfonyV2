@@ -15,7 +15,7 @@
         </thead>
         <tbody>
         {% for plage in etude.EtudeHasPlage %}
-            <tr class="tr-hover" onclick="window.location='/plage/{{ plage.id }}'">
+            <tr class="tr_hover" onclick="window.location='/plage/{{ plage.id }}'">
                 <td>{{ plage.id }}</td>
                 <td>{{ plage.nom }}</td>
             </tr>
@@ -25,5 +25,5 @@
 
 
 
-    {{ include('etude/_delete_form.html.twig') }}
+
 {% endblock %}

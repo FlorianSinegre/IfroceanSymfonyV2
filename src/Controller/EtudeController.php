@@ -61,25 +61,7 @@ class EtudeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="etude_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Etude $etude): Response
-    {
-        $form = $this->createForm(EtudeType::class, $etude);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('etude_index');
-        }
-
-        return $this->render('etude/edit.html.twig', [
-            'etude' => $etude,
-            'form' => $form->createView(),
-        ]);
-    }
 
     /**
      * @Route("/{id}", name="etude_delete", methods={"DELETE"})

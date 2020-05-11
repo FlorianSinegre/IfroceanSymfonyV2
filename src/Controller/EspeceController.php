@@ -39,7 +39,7 @@ class EspeceController extends AbstractController
             $entityManager->persist($espece);
             $entityManager->flush();
 
-            return $this->redirectToRoute('espece_index');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('espece/new.html.twig', [
